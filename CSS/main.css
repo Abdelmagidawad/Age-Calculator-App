@@ -2,8 +2,8 @@
 :root {
   --main-color: #246bfd;
   --second-color: #7d7987;
-  --main-padding: 100px;
-  --main-transition: 0.4s;
+  --three-color: #ffffff;
+  --four-color: #080808;
   --section-background: #e5e5e533;
 }
 
@@ -11,6 +11,8 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  border: none;
+  outline: none;
 }
 
 html {
@@ -19,16 +21,7 @@ html {
 
 body {
   font-family: "Cairo", sans-serif;
-}
-
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  text-decoration: none;
+  background-color: var(--section-background);
 }
 
 /* start container  */
@@ -79,3 +72,188 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
 /* End Scrollbar  */
+/* End Global Rules  */
+
+/* Start Preload  */
+.preload {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--three-color);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--main-transition);
+  &.hidden {
+    display: none;
+  }
+
+  & div {
+    width: 20px;
+    height: 20px;
+    background-color: var(--main-color);
+    border-radius: 50%;
+    margin: 0 5px;
+    transform: scale(0);
+    animation: up-and-down 0.5s alternate infinite;
+  }
+
+  & .atwo {
+    animation-delay: 0.1s;
+  }
+  & .athree {
+    animation-delay: 0.2s;
+  }
+  & .afour {
+    animation-delay: 0.3s;
+  }
+  & .afive {
+    animation-delay: 0.4s;
+  }
+  & .asix {
+    animation-delay: 0.5s;
+  }
+}
+
+@keyframes up-and-down {
+  to {
+    transform: scale(1);
+  }
+}
+/* End Preload  */
+
+/* Start Age calculator content  */
+.container {
+  & .Content-AgeCalc {
+    width: min(80%, 38.12em);
+    /*  */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    & .main-title {
+      width: fit-content;
+      text-align: center;
+      margin: 0px auto 60px;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 50px;
+        z-index: -1;
+        background-color: var(--main-color);
+        border-radius: 3px;
+        animation: loading 7s linear infinite alternate;
+      }
+      & h2 {
+        margin: 0;
+        color: var(--main-color);
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 1.1;
+        mix-blend-mode: color-dodge;
+      }
+    }
+
+    & .content-input {
+      background-color: var(--three-color);
+      padding: 1.87em 1.5em;
+      border-radius: 0.6em;
+      box-shadow: 0 0.93em 1.25em rgba(0, 0, 0, 0.1);
+      margin-bottom: 4.12em;
+
+      & > p {
+        font-size: 1.4em;
+        font-weight: bold;
+        color: var(--second-color);
+        margin: 0 0 20px;
+      }
+      & .input-btn {
+        display: grid;
+        grid-template-columns: 9fr 3fr;
+        gap: 1em;
+
+        & :where(input, button) {
+          font-size: 0.98em;
+          font-weight: bold;
+          border-radius: 0.31em;
+        }
+
+        & input {
+          color: var(--four-color);
+          padding: 1.2em 1.25em;
+          background-color: #eeeeff;
+        }
+        & button {
+          cursor: pointer;
+          color: var(--three-color);
+          background-color: var(--main-color);
+          transition: 0.4s;
+          &:hover {
+            box-shadow: 0 0 0.8em 0.2em var(--main-color);
+          }
+        }
+      }
+    }
+
+    & .output-res {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      & .box {
+        width: 8.25em;
+        height: 6.25em;
+        color: var(--four-color);
+        border-radius: 0.6em;
+        background-color: var(--three-color);
+        display: grid;
+        place-items: center;
+        padding: 1.25em 0;
+        box-shadow: 0 0.93em 1.25em rgba(0, 0, 0, 0.1);
+
+        & span {
+          font-size: 1.6em;
+          font-weight: bold;
+          color: var(--second-color);
+        }
+        & p {
+          margin: 10px 0 0;
+          font-size: 1.3em;
+          color: var(--main-color);
+        }
+      }
+    }
+  }
+
+  @media (width<=600px) {
+    & .Content-AgeCalc {
+      width: min(95%, 38.12em);
+      & .output-res {
+        & .box {
+          width: 6.25em;
+        }
+      }
+    }
+  }
+}
+
+@keyframes loading {
+  0%,
+  100% {
+    left: 0;
+  }
+
+  50% {
+    left: calc(100% - 50px);
+  }
+}
+/* End Age calculator content  */
