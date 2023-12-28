@@ -29,8 +29,7 @@ function ageCalculate() {
     if (
       isFutureDate(birthDateDetails, currentYear, currentMonth, currentDate)
     ) {
-      // alert("Not born Yet ");
-      alert("date of birth can't be in the future");
+      Alert("Date of Birth Can't be in the Future");
       displayResult("0", "0", "0");
       return;
     }
@@ -45,7 +44,7 @@ function ageCalculate() {
     displayResult(days, months, years);
     inputDateBirth.value = "";
   } else {
-    alert("Please add date of birth");
+    Alert("Please add Date of Birth");
   }
 }
 
@@ -133,6 +132,23 @@ function displayResult(birthDate, birthMonth, birthYear) {
   boxDays.textContent = birthDate;
 }
 
+function Alert(massage) {
+  let contNotification = document.querySelector(".notification");
+  let not = document.createElement("div");
+  not.classList.add("not");
+  let notContent = `<i class="fa-solid fa-triangle-exclamation"></i>
+              <p>${massage}</p>`;
+  not.innerHTML = notContent;
+  contNotification.append(not);
+
+  setTimeout(() => removeNotAlert(not), 3000);
+}
+
+function removeNotAlert(not) {
+  not.classList.add("hide");
+  setTimeout(() => not.remove(), 300);
+}
+
 // preload
 let preloadContent = document.querySelector(".preload");
 
@@ -170,4 +186,3 @@ function checkLocalStorage() {
     btnThem.classList.add("trans");
   }
 }
-// localStorage.clear();

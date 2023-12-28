@@ -107,6 +107,89 @@ body {
 }
 /* End Preload  */
 
+/* Start Notifications  */
+.notification {
+  position: fixed;
+  top: 30px;
+  right: 20px;
+  z-index: 10;
+
+  & .not {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0px 15px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
+    margin-bottom: 10px;
+    position: relative;
+    animation: show-not 0.3s ease forwards;
+
+    &.hide {
+      animation: hide-not 0.3s ease forwards;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 100%;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      background-color: #e9bd0c;
+      animation: progress 3s linear forwards;
+    }
+
+    & i {
+      color: #e9bd0c;
+      font-size: 1.4rem;
+    }
+    & p {
+      color: var(--four-color);
+      font-size: 1.08rem;
+    }
+  }
+}
+
+@keyframes show-not {
+  0% {
+    transform: translateX(100%);
+  }
+  40% {
+    transform: translateX(-5%);
+  }
+  80% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-7%);
+  }
+}
+@keyframes hide-not {
+  0% {
+    transform: translateX(-7%);
+  }
+  40% {
+    transform: translateX(0%);
+  }
+  80% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(calc(100% + 20px));
+  }
+}
+
+@keyframes progress {
+  100% {
+    width: 0px;
+  }
+}
+/* End Notifications  */
+
 /* Start switch Dark&light   */
 .switch {
   font-size: 17px;
