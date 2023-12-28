@@ -415,6 +415,7 @@ body {
       width: min(95%, 38.12em);
       & .content-input {
         & .input-btn {
+          gap: 15px;
           grid-template-columns: 70% 25%;
         }
       }
