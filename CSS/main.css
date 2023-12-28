@@ -417,6 +417,9 @@ body {
         & .input-btn {
           gap: 15px;
           grid-template-columns: 70% 25%;
+          & input {
+            min-width: 100%;
+          }
         }
       }
       & .output-res {
