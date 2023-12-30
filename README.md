@@ -1,4 +1,4 @@
-# Age Calculator App
+## Age Calculator App
 
 ## Overview
 
@@ -11,7 +11,7 @@ The Age Calculator App that allows you to calculate the age in years, months, an
 - Option to reset and clear the out put for a new calculation.
 - Dark and light theme for user preference.
 
-  ## Technologies Used
+## Technologies Used
 
 - HTML
 - CSS
